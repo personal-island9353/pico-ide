@@ -15,5 +15,5 @@ jobs:
         run: npm ci
       - name: Run Lint Script
         run: npm run lint
-      - name: Run Build Script
-        run: npm run build
+      - name: Run Make Script
+        run: npm run make
