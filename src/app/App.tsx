@@ -17,7 +17,11 @@ function App() {
       <Content bottomPanel={"Bottom Panel"}>Center Panel</Content>
       <Sidebar side="right">
         <div className={styles.iconButtonWrapper}>
-          <IconButton icon={<ArrowsPointingOutIcon />} title="Maximize" />
+          <IconButton
+            icon={<ArrowsPointingOutIcon />}
+            onClick={() => console.log("Expand clicked")}
+            title="Maximize"
+          />
           <IconButton
             icon={<XMarkIcon />}
             onClick={() => console.log("Close clicked")}
