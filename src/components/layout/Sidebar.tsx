@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 import useResizable from "@hooks/layout/useResizable";
 import styles from "./Sidebar.module.css";
 
@@ -21,10 +21,7 @@ function Sidebar({
     side,
   });
 
-  const sidebarClasses = [
-    styles.sidebar,
-    side === "left" ? styles.borderRight : styles.borderLeft,
-  ].join(" ");
+  const sidebarClasses = `${styles.sidebar} ${side === "left" ? styles.borderRight : styles.borderLeft}`;
 
   return (
     <div
@@ -32,15 +29,9 @@ function Sidebar({
       style={{ width: width !== undefined ? `${width}px` : "auto" }}
       className={sidebarClasses}
     >
-      {side === "left" && resizable && (
+      {resizable && (
         <div
-          className={`${styles.resizer} ${styles.resizerRight}`}
-          onMouseDown={startResizing}
-        />
-      )}
-      {side === "right" && resizable && (
-        <div
-          className={`${styles.resizer} ${styles.resizerLeft}`}
+          className={`${styles.resizer} ${side === "left" ? styles.resizerRight : styles.resizerLeft}`}
           onMouseDown={startResizing}
         />
       )}
