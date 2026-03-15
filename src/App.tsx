@@ -1,5 +1,16 @@
+import { useTranslation } from "react-i18next";
+
 function App() {
-  return <h1>Hello World</h1>
+  const { t, i18n } = useTranslation();
+
+  return (
+    <div>
+      <h1>{t("welcome")}</h1>
+      <p>{t("hello")}</p>
+      <button onClick={() => i18n.changeLanguage("en")}>EN</button>
+      <button onClick={() => i18n.changeLanguage("fr")}>FR</button>
+    </div>
+  );
 }
 
 export default App;
