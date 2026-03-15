@@ -1,56 +1,19 @@
-import {
-  PropsWithChildren,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { PropsWithChildren } from "react";
+import useResizable from "@hooks/layout/useResizable";
 
 export type SidebarProps = {
   side: "left" | "right";
 };
 
 function Sidebar({ children, side }: PropsWithChildren<SidebarProps>) {
-  const [width, setWidth] = useState<number | undefined>(undefined);
-  const isResizing = useRef(false);
-  const sidebarRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    if (sidebarRef.current) {
-      setWidth(sidebarRef.current.offsetWidth);
-    }
-  }, []);
-
-  const resize = useCallback((e: MouseEvent) => {
-    if (isResizing.current && side === "left") {
-      setWidth(Math.max(100, Math.min(e.clientX, window.innerWidth / 2)));
-    } else if (isResizing.current && side === "right") {
-      const newWidth = window.innerWidth - e.clientX;
-      setWidth(Math.max(100, Math.min(newWidth, window.innerWidth / 2)));
-    }
-  }, []);
-
-  const startResizing = useCallback(() => {
-    isResizing.current = true;
-    document.body.style.cursor = "col-resize";
-    document.body.style.userSelect = "none";
-  }, []);
-
-  const stopResizing = useCallback(() => {
-    isResizing.current = false;
-    document.body.style.cursor = "default";
-    document.body.style.userSelect = "auto";
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("mousemove", resize);
-    window.addEventListener("mouseup", stopResizing);
-    return () => {
-      window.removeEventListener("mousemove", resize);
-      window.removeEventListener("mouseup", stopResizing);
-    };
-  }, [resize, stopResizing]);
+  const {
+    dimension: width,
+    elementRef: sidebarRef,
+    startResizing,
+  } = useResizable({
+    orientation: "horizontal",
+    side,
+  });
 
   return (
     <>
