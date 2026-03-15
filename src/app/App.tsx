@@ -3,7 +3,7 @@ import Header from "@components/layout/Header";
 import Sidebar from "@components/layout/Sidebar";
 import Content from "@components/layout/Content";
 import Footer from "@components/layout/Footer";
-import { XMarkIcon } from "@heroicons/react/16/solid";
+import { ArrowsPointingOutIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import IconButton from "@components/ui/IconButton";
 import styles from "./App.module.css";
 
@@ -17,6 +17,7 @@ function App() {
         <Content bottomPanel={"Bottom Panel"}>Center Panel</Content>
         <Sidebar side="right">
           <div className={styles.iconButtonWrapper}>
+            <IconButton icon={<ArrowsPointingOutIcon />} title="Maximize" />
             <IconButton
               icon={<XMarkIcon />}
               onClick={() => console.log("Close clicked")}
