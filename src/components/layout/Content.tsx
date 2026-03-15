@@ -18,18 +18,16 @@ function Content({ bottomPanel, children }: PropsWithChildren<ContentProps>) {
   return (
     <div className="flex flex-1 flex-col justify-between bg-white overflow-hidden">
       <div className="w-full p-4">{children}</div>
-      <div className="w-full">
+      <div
+        ref={bottomPanelRef}
+        style={{ height: height !== undefined ? `${height}px` : "auto" }}
+        className="bg-gray-50 border-t p-4 relative"
+      >
         <div
-          className="h-1 cursor-row-resize hover:bg-blue-400 active:bg-blue-600 transition-colors"
+          className="absolute top-0 left-0 right-0 h-1 cursor-row-resize hover:bg-blue-400 active:bg-blue-600 transition-colors"
           onMouseDown={startResizing}
         />
-        <div
-          ref={bottomPanelRef}
-          style={{ height: height !== undefined ? `${height}px` : "auto" }}
-          className=" bg-gray-50 border-t p-4"
-        >
-          {bottomPanel}
-        </div>
+        {bottomPanel}
       </div>
     </div>
   );
