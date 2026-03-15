@@ -27,6 +27,7 @@
  */
 
 import "@/i18n";
+import "@/styles.css";
 import App from "@components/App";
 import { createRoot } from "react-dom/client";
 
