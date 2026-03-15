@@ -2,6 +2,7 @@ import {
   PropsWithChildren,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -10,12 +11,16 @@ export type SidebarProps = {
   side: "left" | "right";
 };
 
-function Sidebar({
-  children,
-  side,
-}: PropsWithChildren<SidebarProps>) {
-  const [width, setWidth] = useState(250);
+function Sidebar({ children, side }: PropsWithChildren<SidebarProps>) {
+  const [width, setWidth] = useState<number | undefined>(undefined);
   const isResizing = useRef(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (sidebarRef.current) {
+      setWidth(sidebarRef.current.offsetWidth);
+    }
+  }, []);
 
   const resize = useCallback((e: MouseEvent) => {
     if (isResizing.current && side === "left") {
@@ -57,7 +62,8 @@ function Sidebar({
       )}
 
       <div
-        style={{ width: `${width}px` }}
+        ref={sidebarRef}
+        style={{ width: width !== undefined ? `${width}px` : "auto" }}
         className={`flex-none bg-gray-50 ${side === "left" ? "border-r" : "border-l"} overflow-auto p-4`}
       >
         {children}
