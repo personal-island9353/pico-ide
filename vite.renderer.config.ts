@@ -11,6 +11,7 @@ export default defineConfig({
       "@components": "/src/components",
       "@hooks": "/src/hooks",
       "@types": "/src/types",
+      "@i18n": "/src/i18n",
     },
   },
 });
