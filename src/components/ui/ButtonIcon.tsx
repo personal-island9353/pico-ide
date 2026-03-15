@@ -1,12 +1,12 @@
 import React, { ButtonHTMLAttributes } from "react";
-import styles from "./IconButton.module.css";
+import styles from "./ButtonIcon.module.css";
 
 export type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   icon: React.ReactNode;
   text?: string;
 };
 
-function IconButton({ icon, text, className, ...props }: IconButtonProps) {
+function ButtonIcon({ icon, text, className, ...props }: IconButtonProps) {
   const combinedClassName = `${styles.iconButton} ${className || ""}`.trim();
 
   return (
@@ -17,4 +17,4 @@ function IconButton({ icon, text, className, ...props }: IconButtonProps) {
   );
 }
 
-export default IconButton;
+export default ButtonIcon;

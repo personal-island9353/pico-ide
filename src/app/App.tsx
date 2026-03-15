@@ -4,7 +4,7 @@ import Sidebar from "@components/layout/Sidebar";
 import Content from "@components/layout/Content";
 import Footer from "@components/layout/Footer";
 import { ArrowsPointingOutIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import IconButton from "@components/ui/IconButton";
+import ButtonIcon from "@components/ui/ButtonIcon";
 import styles from "./App.module.css";
 
 function App() {
@@ -17,12 +17,12 @@ function App() {
       <Content bottomPanel={"Bottom Panel"}>Center Panel</Content>
       <Sidebar side="right">
         <div className={styles.iconButtonWrapper}>
-          <IconButton
+          <ButtonIcon
             icon={<ArrowsPointingOutIcon />}
             onClick={() => console.log("Expand clicked")}
             title="Maximize"
           />
-          <IconButton
+          <ButtonIcon
             icon={<XMarkIcon />}
             onClick={() => console.log("Close clicked")}
             title="Close"
