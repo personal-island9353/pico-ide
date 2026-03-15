@@ -1,7 +1,8 @@
 import { PropsWithChildren } from "react";
+import styles from "./Footer.module.css";
 
 function Footer({ children }: PropsWithChildren) {
-  return <header className="p-4 bg-gray-100 border-t">{children}</header>;
+  return <footer className={styles.footer}>{children}</footer>;
 }
 
 export default Footer;

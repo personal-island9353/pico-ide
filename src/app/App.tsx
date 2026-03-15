@@ -5,17 +5,18 @@ import Content from "@components/layout/Content";
 import Footer from "@components/layout/Footer";
 import { XMarkIcon } from "@heroicons/react/16/solid";
 import IconButton from "@components/ui/IconButton";
+import styles from "./App.module.css";
 
 function App() {
   return (
     <Layout>
       <Header>Header</Header>
-      <div className="flex flex-1 overflow-hidden">
+      <div className={styles.mainContainer}>
         <Sidebar side="left" resizable={false}>Left Column</Sidebar>
         <Sidebar side="left">Left Column</Sidebar>
         <Content bottomPanel={"Bottom Panel"}>Center Panel</Content>
         <Sidebar side="right">
-          <div className={"flex justify-end"}>
+          <div className={styles.iconButtonWrapper}>
             <IconButton
               icon={<XMarkIcon />}
               onClick={() => console.log("Close clicked")}

@@ -1,7 +1,8 @@
 import { PropsWithChildren } from "react";
+import styles from "./Header.module.css";
 
 function Header({ children }: PropsWithChildren) {
-  return <header className="p-4 bg-gray-100 border-b">{children}</header>;
+  return <header className={styles.header}>{children}</header>;
 }
 
 export default Header;

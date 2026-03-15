@@ -1,0 +1,40 @@
+.contentWrapper {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  overflow: hidden;
+}
+
+.mainContent {
+  width: 100%;
+  padding: 1rem;
+}
+
+.bottomPanel {
+  background-color: var(--bg-gray-50);
+  border-top: 1px solid var(--border-color);
+  padding: 1rem;
+  position: relative;
+}
+
+.resizer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.25rem;
+  cursor: row-resize;
+  transition-property: background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.resizer:hover {
+  background-color: var(--blue-400);
+}
+
+.resizer:active {
+  background-color: var(--blue-600);
+}

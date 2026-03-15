@@ -1,5 +1,6 @@
 import useResizable from "@hooks/layout/useResizable";
 import React, { PropsWithChildren } from "react";
+import styles from "./Content.module.css";
 
 export type ContentProps = {
   bottomPanel: React.ReactNode;
@@ -16,15 +17,15 @@ function Content({ bottomPanel, children }: PropsWithChildren<ContentProps>) {
   });
 
   return (
-    <div className="flex flex-1 flex-col justify-between bg-white overflow-hidden">
-      <div className="w-full p-4">{children}</div>
+    <div className={styles.contentWrapper}>
+      <div className={styles.mainContent}>{children}</div>
       <div
         ref={bottomPanelRef}
         style={{ height: height !== undefined ? `${height}px` : "auto" }}
-        className="bg-gray-50 border-t p-4 relative"
+        className={styles.bottomPanel}
       >
         <div
-          className="absolute top-0 left-0 right-0 h-1 cursor-row-resize hover:bg-blue-400 active:bg-blue-600 transition-colors"
+          className={styles.resizer}
           onMouseDown={startResizing}
         />
         {bottomPanel}

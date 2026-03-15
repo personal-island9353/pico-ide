@@ -1,0 +1,10 @@
+.mainContainer {
+  display: flex;
+  flex: 1 1 0%;
+  overflow: hidden;
+}
+
+.iconButtonWrapper {
+  display: flex;
+  justify-content: flex-end;
+}

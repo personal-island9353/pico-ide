@@ -1,0 +1,42 @@
+.sidebar {
+  flex: none;
+  background-color: var(--bg-gray-50);
+  overflow: auto;
+  position: relative;
+}
+
+.borderRight {
+  border-right: 1px solid var(--border-color);
+}
+
+.borderLeft {
+  border-left: 1px solid var(--border-color);
+}
+
+.resizer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0.25rem;
+  cursor: col-resize;
+  transition-property: background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  z-index: 10;
+}
+
+.resizer:hover {
+  background-color: var(--blue-400);
+}
+
+.resizer:active {
+  background-color: var(--blue-600);
+}
+
+.resizerRight {
+  right: 0;
+}
+
+.resizerLeft {
+  left: 0;
+}

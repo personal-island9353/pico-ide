@@ -1,0 +1,41 @@
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.iconButton:hover {
+  background-color: var(--bg-gray-200);
+}
+
+.iconButton:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--gray-400);
+}
+
+.iconButton:active {
+  background-color: var(--bg-gray-300);
+}
+
+.iconWrapper {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}

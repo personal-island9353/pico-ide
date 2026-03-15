@@ -1,8 +1,9 @@
 import { PropsWithChildren } from "react";
+import styles from "./Layout.module.css";
 
 function Layout({ children }: PropsWithChildren) {
   return (
-    <div className="flex flex-col h-screen overflow-hidden">{children}</div>
+    <div className={styles.layout}>{children}</div>
   );
 }
 
