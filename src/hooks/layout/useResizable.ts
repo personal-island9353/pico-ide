@@ -15,55 +15,52 @@ export type ResizableProps = {
 };
 
 function useResizable({
-  initialDimension,
   minDimension = 100,
   maxDimension,
   orientation,
   side,
 }: ResizableProps) {
-  const [dimension, setDimension] = useState<number | undefined>(
-    initialDimension
-  );
+  const [dimension, setDimension] = useState<number | undefined>(minDimension);
   const isResizing = useRef(false);
   const elementRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    if (elementRef.current && initialDimension === undefined) {
+    if (elementRef.current) {
       if (orientation === "horizontal") {
         setDimension(elementRef.current.offsetWidth);
       } else {
         setDimension(elementRef.current.offsetHeight);
       }
     }
-  }, [orientation, initialDimension]);
+  }, [orientation]);
 
-  const resize = useCallback(
-    (e: MouseEvent) => {
-      if (!isResizing.current) return;
+  const resize = (e: MouseEvent) => {
+    if (!isResizing.current) {
+      return;
+    }
 
-      let newDimension: number;
-      const maxPossible =
-        orientation === "horizontal" ? window.innerWidth : window.innerHeight;
-      const limit = maxDimension ?? maxPossible / 2;
+    let newDimension = dimension;
 
-      if (orientation === "horizontal") {
-        if (side === "left") {
-          newDimension = e.clientX;
-        } else {
-          newDimension = window.innerWidth - e.clientX;
-        }
+    if (orientation === "horizontal") {
+      if (side === "left") {
+        newDimension += e.movementX;
       } else {
-        if (side === "top") {
-          newDimension = e.clientY;
-        } else {
-          newDimension = window.innerHeight - e.clientY;
-        }
+        newDimension -= e.movementX;
       }
+    } else {
+      if (side === "top") {
+        newDimension += e.movementY;
+      } else {
+        newDimension -= e.movementY;
+      }
+    }
 
-      setDimension(Math.max(minDimension, Math.min(newDimension, limit)));
-    },
-    [orientation, side, minDimension, maxDimension]
-  );
+    const maxPossible =
+      orientation === "horizontal" ? window.innerWidth : window.innerHeight;
+    const limit = maxDimension ?? maxPossible / 2;
+
+    setDimension(Math.max(minDimension, Math.min(newDimension, limit)));
+  };
 
   const startResizing = useCallback(() => {
     isResizing.current = true;
