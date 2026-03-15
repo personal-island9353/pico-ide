@@ -9,13 +9,11 @@
 
 .mainContent {
   width: 100%;
-  padding: 1rem;
 }
 
 .bottomPanel {
   background-color: var(--bg-gray-50);
   border-top: 1px solid var(--border-color);
-  padding: 1rem;
   position: relative;
 }
 
