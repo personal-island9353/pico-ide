@@ -20,7 +20,7 @@ function Sidebar({ children, side, resizable = true }: PropsWithChildren<Sidebar
     <div
       ref={sidebarRef}
       style={{ width: width !== undefined ? `${width}px` : "auto" }}
-      className={`flex-none bg-gray-50 ${side === "left" ? "border-r" : "border-l"} overflow-auto p-4 relative`}
+      className={`flex-none bg-gray-50 ${side === "left" ? "border-r" : "border-l"} overflow-auto relative`}
     >
       {side === "left" && resizable && (
         <div
