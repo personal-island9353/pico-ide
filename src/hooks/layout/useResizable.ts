@@ -34,7 +34,7 @@ function useResizable({
     }
   }, [orientation]);
 
-  const resize = (e: MouseEvent) => {
+  const resize =useCallback((e: MouseEvent) => {
     if (!isResizing.current) {
       return;
     }
@@ -60,7 +60,7 @@ function useResizable({
     const limit = maxDimension ?? maxPossible / 2;
 
     setDimension(Math.max(minDimension, Math.min(newDimension, limit)));
-  };
+  }, [dimension, setDimension, maxDimension, minDimension, orientation, side]);
 
   const startResizing = useCallback(() => {
     isResizing.current = true;
