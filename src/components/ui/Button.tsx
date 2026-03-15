@@ -9,10 +9,7 @@ function Button({ text, className, ...props }: ButtonProps) {
   const combinedClassName = `${styles.button} ${className || ""}`.trim();
 
   return (
-    <button
-      className={combinedClassName}
-      {...props}
-    >
+    <button className={combinedClassName} {...props}>
       {text}
     </button>
   );

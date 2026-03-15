@@ -7,7 +7,11 @@ export type SidebarProps = {
   resizable?: boolean;
 };
 
-function Sidebar({ children, side, resizable = true }: PropsWithChildren<SidebarProps>) {
+function Sidebar({
+  children,
+  side,
+  resizable = true,
+}: PropsWithChildren<SidebarProps>) {
   const {
     dimension: width,
     elementRef: sidebarRef,

@@ -12,7 +12,9 @@ function App() {
     <Layout>
       <Header>Header</Header>
       <div className={styles.mainContainer}>
-        <Sidebar side="left" resizable={false}>Left Column</Sidebar>
+        <Sidebar side="left" resizable={false}>
+          Left Column
+        </Sidebar>
         <Sidebar side="left">Left Column</Sidebar>
         <Content bottomPanel={"Bottom Panel"}>Center Panel</Content>
         <Sidebar side="right">
@@ -25,7 +27,9 @@ function App() {
             />
           </div>
         </Sidebar>
-        <Sidebar side="right" resizable={false}>Right Column</Sidebar>
+        <Sidebar side="right" resizable={false}>
+          Right Column
+        </Sidebar>
       </div>
       <Footer>Footer</Footer>
     </Layout>

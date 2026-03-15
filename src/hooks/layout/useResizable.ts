@@ -34,33 +34,36 @@ function useResizable({
     }
   }, [orientation]);
 
-  const resize =useCallback((e: MouseEvent) => {
-    if (!isResizing.current) {
-      return;
-    }
-
-    let newDimension = dimension;
-
-    if (orientation === "horizontal") {
-      if (side === "left") {
-        newDimension += e.movementX;
-      } else {
-        newDimension -= e.movementX;
+  const resize = useCallback(
+    (e: MouseEvent) => {
+      if (!isResizing.current) {
+        return;
       }
-    } else {
-      if (side === "top") {
-        newDimension += e.movementY;
+
+      let newDimension = dimension;
+
+      if (orientation === "horizontal") {
+        if (side === "left") {
+          newDimension += e.movementX;
+        } else {
+          newDimension -= e.movementX;
+        }
       } else {
-        newDimension -= e.movementY;
+        if (side === "top") {
+          newDimension += e.movementY;
+        } else {
+          newDimension -= e.movementY;
+        }
       }
-    }
 
-    const maxPossible =
-      orientation === "horizontal" ? window.innerWidth : window.innerHeight;
-    const limit = maxDimension ?? maxPossible / 2;
+      const maxPossible =
+        orientation === "horizontal" ? window.innerWidth : window.innerHeight;
+      const limit = maxDimension ?? maxPossible / 2;
 
-    setDimension(Math.max(minDimension, Math.min(newDimension, limit)));
-  }, [dimension, setDimension, maxDimension, minDimension, orientation, side]);
+      setDimension(Math.max(minDimension, Math.min(newDimension, limit)));
+    },
+    [dimension, setDimension, maxDimension, minDimension, orientation, side],
+  );
 
   const startResizing = useCallback(() => {
     isResizing.current = true;

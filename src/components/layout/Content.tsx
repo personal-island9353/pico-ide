@@ -24,10 +24,7 @@ function Content({ bottomPanel, children }: PropsWithChildren<ContentProps>) {
         style={{ height: height !== undefined ? `${height}px` : "auto" }}
         className={styles.bottomPanel}
       >
-        <div
-          className={styles.resizer}
-          onMouseDown={startResizing}
-        />
+        <div className={styles.resizer} onMouseDown={startResizing} />
         {bottomPanel}
       </div>
     </div>

@@ -10,10 +10,7 @@ function IconButton({ icon, text, className, ...props }: IconButtonProps) {
   const combinedClassName = `${styles.iconButton} ${className || ""}`.trim();
 
   return (
-    <button
-      className={combinedClassName}
-      {...props}
-    >
+    <button className={combinedClassName} {...props}>
       <span className={styles.iconWrapper}>{icon}</span>
       {text && <span className={styles.text}>{text}</span>}
     </button>
