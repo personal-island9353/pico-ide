@@ -25,14 +25,44 @@ function App() {
   } = useAppSelector((state) => state.layout);
 
   return (
-    <Layout header={<Header>Header</Header>} footer={<Footer>Footer</Footer>}>
+    <Layout
+      header={
+        <Header>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            Header
+            <div className={styles.iconButtonWrapper}>
+              {rightSidebarOpened && (
+                <ButtonIcon
+                  icon={<ArrowsPointingOutIcon />}
+                  onClick={() => dispatch(toggleMaximizeRightSidebar())}
+                  title="Maximize"
+                />
+              )}
+              <ButtonIcon
+                icon={<XMarkIcon />}
+                onClick={() => dispatch(toggleRightSidebar())}
+                title="Close"
+              />
+            </div>
+          </div>
+        </Header>
+      }
+      footer={<Footer>Footer</Footer>}
+    >
       <Sidebar side="left" resizable={false}>
         <div className={styles.iconButtonWrapper}>
-          <ButtonIcon
-            icon={<ArrowsPointingOutIcon />}
-            onClick={() => dispatch(toggleMaximizeLeftSidebar())}
-            title="Maximize"
-          />
+          {leftSidebarOpened && (
+            <ButtonIcon
+              icon={<ArrowsPointingOutIcon />}
+              onClick={() => dispatch(toggleMaximizeLeftSidebar())}
+              title="Maximize"
+            />
+          )}
           <ButtonIcon
             icon={<XMarkIcon />}
             onClick={() => dispatch(toggleLeftSidebar())}
@@ -51,20 +81,6 @@ function App() {
           Right Column
         </Sidebar>
       )}
-      <Sidebar side="right" resizable={false}>
-        <div className={styles.iconButtonWrapper}>
-          <ButtonIcon
-            icon={<ArrowsPointingOutIcon />}
-            onClick={() => dispatch(toggleMaximizeRightSidebar())}
-            title="Maximize"
-          />
-          <ButtonIcon
-            icon={<XMarkIcon />}
-            onClick={() => dispatch(toggleRightSidebar())}
-            title="Close"
-          />
-        </div>
-      </Sidebar>
     </Layout>
   );
 }

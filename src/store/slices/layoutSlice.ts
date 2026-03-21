@@ -18,9 +18,11 @@ const layoutSlice = createSlice({
   reducers: {
     toggleLeftSidebar(state) {
       state.leftSidebar.opened = !state.leftSidebar.opened;
+      state.leftSidebar.maximized = false;
     },
     toggleRightSidebar(state) {
       state.rightSidebar.opened = !state.rightSidebar.opened;
+      state.rightSidebar.maximized = false;
     },
     toggleMaximizeLeftSidebar(state) {
       state.leftSidebar.maximized = !state.leftSidebar.maximized;
