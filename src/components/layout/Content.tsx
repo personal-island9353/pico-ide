@@ -1,3 +1,4 @@
+import { useAppSelector } from "@/store/hooks";
 import useResizable from "@hooks/layout/useResizable";
 import React, { PropsWithChildren } from "react";
 import styles from "./Content.module.css";
@@ -16,8 +17,15 @@ function Content({ bottomPanel, children }: PropsWithChildren<ContentProps>) {
     side: "bottom",
   });
 
+  const {
+    leftSidebar: { maximized: leftSidebarMaximized },
+    rightSidebar: { maximized: rightSidebarMaximized },
+  } = useAppSelector((state) => state.layout);
+
+  const contentClasses = `${styles.contentWrapper} ${leftSidebarMaximized || rightSidebarMaximized ? styles.sidebarMaximized : ""}`;
+
   return (
-    <div className={styles.contentWrapper}>
+    <div className={contentClasses}>
       <div className={styles.mainContent}>{children}</div>
       <div
         ref={bottomPanelRef}

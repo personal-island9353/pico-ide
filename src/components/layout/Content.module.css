@@ -7,6 +7,10 @@
   overflow: hidden;
 }
 
+.sidebarMaximized {
+  display: none;
+}
+
 .mainContent {
   width: 100%;
 }

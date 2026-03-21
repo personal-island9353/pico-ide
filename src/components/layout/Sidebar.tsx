@@ -1,16 +1,18 @@
-import React, { PropsWithChildren } from "react";
 import useResizable from "@hooks/layout/useResizable";
+import { PropsWithChildren } from "react";
 import styles from "./Sidebar.module.css";
 
 export type SidebarProps = {
   side: "left" | "right";
   resizable?: boolean;
+  maximized?: boolean;
 };
 
 function Sidebar({
   children,
   side,
   resizable = true,
+  maximized = false,
 }: PropsWithChildren<SidebarProps>) {
   const {
     dimension: width,
@@ -26,8 +28,12 @@ function Sidebar({
   return (
     <div
       ref={sidebarRef}
-      style={{ width: width !== undefined ? `${width}px` : "auto" }}
-      className={sidebarClasses}
+      style={
+        maximized
+          ? { flex: 1, minWidth: 0 }
+          : { width: width !== undefined ? `${width}px` : "auto" }
+      }
+      className={`${sidebarClasses}`}
     >
       {resizable && (
         <div
