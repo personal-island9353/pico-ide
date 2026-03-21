@@ -1,4 +1,4 @@
-import useResizable from "@hooks/layout/useResizable";
+import useResizable from "@/hooks/layout/useResizable";
 import { PropsWithChildren } from "react";
 import styles from "./Sidebar.module.css";
 

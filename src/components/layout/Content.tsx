@@ -1,5 +1,5 @@
+import useResizable from "@/hooks/layout/useResizable";
 import { useAppSelector } from "@/store/hooks";
-import useResizable from "@hooks/layout/useResizable";
 import React, { PropsWithChildren } from "react";
 import styles from "./Content.module.css";
 

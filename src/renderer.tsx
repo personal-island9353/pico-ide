@@ -26,12 +26,12 @@
  * ```
  */
 
-import "@i18n";
-import "@/styles.css";
 import App from "@/app/App";
+import "@/i18n";
+import { store } from "@/store";
+import "@/styles.css";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import { store } from "@/store";
 
 const container = document.getElementById("root");
 

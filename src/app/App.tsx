@@ -1,17 +1,17 @@
-import Content from "@components/layout/Content";
-import Footer from "@components/layout/Footer";
-import Header from "@components/layout/Header";
-import Layout from "@components/layout/Layout";
-import Sidebar from "@components/layout/Sidebar";
-import ButtonIcon from "@components/ui/ButtonIcon";
-import { ArrowsPointingOutIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
+import Content from "@/components/layout/Content";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import Layout from "@/components/layout/Layout";
+import Sidebar from "@/components/layout/Sidebar";
+import ButtonIcon from "@/components/ui/ButtonIcon";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   toggleLeftSidebar,
   toggleMaximizeLeftSidebar,
   toggleMaximizeRightSidebar,
   toggleRightSidebar,
-} from "@store/slices/layoutSlice";
+} from "@/store/slices/layoutSlice";
+import { ArrowsPointingOutIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import styles from "./App.module.css";
 
 function App() {
