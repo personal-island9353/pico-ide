@@ -1,0 +1,3 @@
+- Maximize footer
+- Integrate Monaco editor
+- Color theme
